@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwimSwimSwum</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>SwimSwimSwum</h1>
+        <p>Track swim sessions, weight, laps, and pool.</p>
+      </header>
+
+      <section class="card">
+        <h2>Add a swim</h2>
+        <form id="swim-form">
+          <label>
+            Date
+            <input type="date" id="date" name="date" required />
+          </label>
+
+          <label>
+            Weight (lbs)
+            <input type="number" id="weight" name="weight" step="0.1" min="0" />
+          </label>
+
+          <label>
+            Laps
+            <input type="number" id="laps" name="laps" step="1" min="0" />
+          </label>
+
+          <label>
+            Pool
+            <select id="pool" name="pool">
+              <option value="">Select a pool</option>
+              <option value="North Pool">North Pool</option>
+              <option value="South Pool">South Pool</option>
+              <option value="Community Pool">Community Pool</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+
+          <label id="other-pool-wrapper" class="hidden">
+            Other pool name
+            <input type="text" id="otherPool" name="otherPool" placeholder="e.g. Hotel Pool" />
+          </label>
+
+          <button type="submit">Save swim</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="list-header">
+          <h2>Swim log</h2>
+          <span id="status" class="status">Loading…</span>
+        </div>
+        <div class="table">
+          <div class="row header-row">
+            <span>Date</span>
+            <span>Weight</span>
+            <span>Laps</span>
+            <span>Pool</span>
+          </div>
+          <div id="swim-list" class="rows"></div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
