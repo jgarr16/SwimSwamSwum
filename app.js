@@ -1,4 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
 import {
   getFirestore,
   collection,
@@ -7,15 +7,15 @@ import {
   orderBy,
   query,
   serverTimestamp,
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyCn5ghjB7z6xo-qJ-74U0oI6BRy5WTttKY",
+  authDomain: "swimswamswum-9796e.firebaseapp.com",
+  projectId: "swimswamswum-9796e",
+  storageBucket: "swimswamswum-9796e.firebasestorage.app",
+  messagingSenderId: "984376275522",
+  appId: "1:984376275522:web:d6139c86f663595324f3db",
 };
 
 const app = initializeApp(firebaseConfig);
