@@ -25,8 +25,6 @@ const form = document.getElementById("swim-form");
 const status = document.getElementById("status");
 const list = document.getElementById("swim-list");
 const poolSelect = document.getElementById("pool");
-const otherPoolWrapper = document.getElementById("other-pool-wrapper");
-const otherPoolInput = document.getElementById("otherPool");
 
 const swimsCollection = collection(db, "swims");
 
@@ -66,23 +64,13 @@ const renderSwims = (docs) => {
   });
 };
 
-poolSelect.addEventListener("change", () => {
-  if (poolSelect.value === "Other") {
-    otherPoolWrapper.classList.remove("hidden");
-  } else {
-    otherPoolWrapper.classList.add("hidden");
-    otherPoolInput.value = "";
-  }
-});
-
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const date = form.date.value;
   const weight = form.weight.value ? Number(form.weight.value) : null;
   const laps = form.laps.value ? Number(form.laps.value) : null;
-  const pool =
-    poolSelect.value === "Other" ? otherPoolInput.value.trim() : poolSelect.value;
+  const pool = poolSelect.value;
 
   if (!date) {
     return;
@@ -97,7 +85,6 @@ form.addEventListener("submit", async (event) => {
   });
 
   form.reset();
-  otherPoolWrapper.classList.add("hidden");
 });
 
 const swimsQuery = query(swimsCollection, orderBy("date", "desc"));
