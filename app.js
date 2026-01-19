@@ -27,6 +27,21 @@ const list = document.getElementById("swim-list");
 const poolSelect = document.getElementById("pool");
 
 const swimsCollection = collection(db, "swims");
+let lastWeight = null;
+
+const todayISO = () => new Date().toISOString().slice(0, 10);
+
+const applyDefaults = () => {
+  if (!form.date.value) {
+    form.date.value = todayISO();
+  }
+  if (!form.laps.value) {
+    form.laps.value = "100";
+  }
+  if (!form.weight.value && Number.isFinite(lastWeight)) {
+    form.weight.value = lastWeight.toString();
+  }
+};
 
 const formatNumber = (value) => {
   if (value === null || value === undefined || value === "") {
@@ -85,6 +100,7 @@ form.addEventListener("submit", async (event) => {
   });
 
   form.reset();
+  applyDefaults();
 });
 
 const swimsQuery = query(swimsCollection, orderBy("date", "desc"));
@@ -94,9 +110,16 @@ onSnapshot(
   (snapshot) => {
     status.textContent = `${snapshot.size} entries`;
     renderSwims(snapshot.docs);
+    const latest = snapshot.docs[0]?.data();
+    if (latest && Number.isFinite(latest.weight)) {
+      lastWeight = latest.weight;
+    }
+    applyDefaults();
   },
   (error) => {
     status.textContent = "Unable to load data";
     console.error("Firestore error:", error);
   }
 );
+
+applyDefaults();
