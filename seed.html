@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seed Swim Data</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="card">
+        <h1>Seed Swim Data</h1>
+        <p>
+          This will insert the historical swim entries into Firestore. It uses the
+          date as the document ID, so rerunning is safe.
+        </p>
+        <button id="seed-button">Seed data</button>
+        <p id="seed-status" class="status"></p>
+      </section>
+    </main>
+    <script type="module" src="./seed.js"></script>
+  </body>
+</html>
